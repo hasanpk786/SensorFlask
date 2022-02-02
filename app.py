@@ -58,11 +58,11 @@ def thread_killer():
 
 # Multi threading to call functions every 5 seconds will not stop other code from running.
 # 300 = 5mins 600= 10 mins.
-t1 = threading.Thread(target=lambda: every(5, Alarm))
-t1.start()
+# t1 = threading.Thread(target=lambda: every(5, Alarm))
+# t1.start()
 
-t2 = threading.Thread(target=lambda: thread_killer())
-t2.start()
+# t2 = threading.Thread(target=lambda: thread_killer())
+# t2.start()
 
 
 # def Every5():
@@ -96,68 +96,64 @@ else:
 # cursor for writing queries.
 my_cursor = mydb.cursor()
 
-# creating database if it doesn't exist.
-my_cursor.execute("Create database if not exists testing")
+# # creating database if it doesn't exist.
+# my_cursor.execute("Create database if not exists testing")
 
-# Showing all databases
-my_cursor.execute("Show databases")
+# # Showing all databases
+# my_cursor.execute("Show databases")
 
-# For loop to print all databases
-for records in my_cursor:
-    print(records)
+# # For loop to print all databases
+# for records in my_cursor:
+#     print(records)
 
-# create table called employee in database testing if it doesn't exist.
-my_cursor.execute(
-    "Create table if not exists employee (name varchar(200), salary int(20))"
-)
-
-
-# Showing all Tables
-my_cursor.execute("Show full tables")
-
-print("\n")
-# For loop to print all databases
-for tables in my_cursor:
-    print("Are there any tables? \n", tables)
-
-# Displays information about the columns in a given table.
-my_cursor.execute("Show columns from employee")
-print("This should be a new line", "\n")
+# # create table called employee in database testing if it doesn't exist.
+# my_cursor.execute(
+#     "Create table if not exists employee (name varchar(200), salary int(20))"
+# )
 
 
-# For loop to display columns with their data in table eg:
-# { Feild    Type      Null   Key  Default  Extra}
-# ( 'sal', 'int(20)', 'YES',  '',    None,   ''  )
-for col in my_cursor:
-    print(col)
+# # Showing all Tables
+# my_cursor.execute("Show full tables")
 
-print("\n")
+# print("\n")
+# # For loop to print all databases
+# for tables in my_cursor:
+#     print("Are there any tables? \n", tables)
 
-print("check tes")
-my_cursor.execute(
-    "CREATE TABLE IF NOT EXISTS accounts"
-    "("
-    "id int(11) NOT NULL AUTO_INCREMENT,"
-    "username varchar(50) NOT NULL,"
-    "temperature varchar(255) NOT NULL,"
-    "PRIMARY KEY (id)"
-    ")AUTO_INCREMENT=1"
-)
-print("UH Hello?")
+# # Displays information about the columns in a given table.
+# my_cursor.execute("Show columns from employee")
+# print("This should be a new line", "\n")
 
+
+# # For loop to display columns with their data in table eg:
+# # { Feild    Type      Null   Key  Default  Extra}
+# # ( 'sal', 'int(20)', 'YES',  '',    None,   ''  )
 # for col in my_cursor:
 #     print(col)
+
+# print("\n")
+
+# print("check tes")
+# my_cursor.execute(
+#     "CREATE TABLE IF NOT EXISTS accounts"
+#     "("
+#     "id int(11) NOT NULL AUTO_INCREMENT,"
+#     "username varchar(50) NOT NULL,"
+#     "temperature varchar(255) NOT NULL,"
+#     "PRIMARY KEY (id)"
+#     ")AUTO_INCREMENT=1"
+# )
+# print("UH Hello?")
+
+# # for col in my_cursor:
+# #     print(col)
     
-my_cursor.execute("Show columns from accounts")
+# my_cursor.execute("Show columns from accounts")
 
-print("This should be a new line", "\n")
+# print("This should be a new line", "\n")
 
-for i in my_cursor:
-    print(i)
-
-
-def pr():
-    print("BUTTON")
+# for i in my_cursor:
+#     print(i)
 
 
 @app.route("/all", methods=["GET"])
