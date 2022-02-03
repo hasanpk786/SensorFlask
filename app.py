@@ -1,11 +1,13 @@
 import time
 import keyboard
-import mariadb
+# import mariadb
 import threading
 from types import TracebackType
+import mysql.connector as mariadb
 from flask import Flask, request, jsonify
 from winsound import Beep
 
+# import mysql.connector as mariadb
 
 # Used to kill threads
 Killer = True
@@ -147,7 +149,7 @@ my_cursor = mydb.cursor()
 
 # # for col in my_cursor:
 # #     print(col)
-    
+
 # my_cursor.execute("Show columns from accounts")
 
 # print("This should be a new line", "\n")
@@ -193,12 +195,8 @@ def hello_world():
         print(data)
         global my_cursor, mydb
         my_cursor.execute(
-            "INSERT INTO accounts"
-            "("
-            "username, temperature"
-            ")"
-            "values(%s,%s)",
-            (data["username"], data["temperature"])
+            "INSERT INTO accounts" "(" "username, temperature" ")" "values(%s,%s)",
+            (data["username"], data["temperature"]),
         )
         # "DateCreated:": checkuser["dateCreated"].strftime("%d/%m/%Y %H:%M:%S"),
         mydb.commit()
