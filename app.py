@@ -1,10 +1,11 @@
 import time
 import keyboard
+
 # import mariadb
 import threading
 from types import TracebackType
 import mysql.connector as mariadb
-from flask import Flask, request, jsonify,render_template
+from flask import Flask, request, jsonify, render_template
 from winsound import Beep
 
 # import mysql.connector as mariadb
@@ -187,9 +188,8 @@ def all():
 
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-    
-    return render_template("hello.html")
 
+    return render_template("hello.html")
 
 
 # name = "Hassan"
