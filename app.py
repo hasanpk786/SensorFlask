@@ -11,52 +11,52 @@ from winsound import Beep
 # import mysql.connector as mariadb
 
 # Used to kill threads
-Killer = True
-counter = 0
+# Killer = True
+# counter = 0
 
-# Function used to run something every 'delay = 5' seconds
-def every(delay, task):
-    next_time = time.time() + delay
-    while True:
-        time.sleep(max(0, next_time - time.time()))
-        try:
-            if Killer:
-                task()
-            else:
-                break
-        except Exception:
-            TracebackType.print_exc()
-            # in production code you might want to have this instead of course:
-            # logger.exception("Problem while executing repetitive task.")
-        # skip tasks if we are behind schedule:
-        next_time += (time.time() - next_time) // delay * delay + delay
+# # Function used to run something every 'delay = 5' seconds
+# def every(delay, task):
+#     next_time = time.time() + delay
+#     while True:
+#         time.sleep(max(0, next_time - time.time()))
+#         try:
+#             if Killer:
+#                 task()
+#             else:
+#                 break
+#         except Exception:
+#             TracebackType.print_exc()
+#             # in production code you might want to have this instead of course:
+#             # logger.exception("Problem while executing repetitive task.")
+#         # skip tasks if we are behind schedule:
+#         next_time += (time.time() - next_time) // delay * delay + delay
 
 
-# Test function
-def foo():
-    print("foo", time.time())
+# # Test function
+# def foo():
+#     print("foo", time.time())
 
 
 # Rings an alarm whenever functions is called for 3 secs.
-def Alarm():
-    AlarmTimer = 0
-    while AlarmTimer < 2:
-        duration = 1000  # milliseconds
-        freq = 420  # Hz
-        Beep(freq, duration)
-        print(AlarmTimer)
-        AlarmTimer += 1
+# def Alarm():
+#     AlarmTimer = 0
+#     while AlarmTimer < 2:
+#         duration = 1000  # milliseconds
+#         freq = 420  # Hz
+#         Beep(freq, duration)
+#         print(AlarmTimer)
+#         AlarmTimer += 1
 
 
-# Kills all threads when p is pressed
-def thread_killer():
-    while True:
-        if keyboard.read_key() == "p":
-            print("You pressed p")
-            global Killer
-            Killer = False
-            print("Threads killed")
-            break
+# # Kills all threads when p is pressed
+# def thread_killer():
+#     while True:
+#         if keyboard.read_key() == "p":
+#             print("You pressed p")
+#             global Killer
+#             Killer = False
+#             print("Threads killed")
+#             break
 
 
 # Multi threading to call functions every 5 seconds will not stop other code from running.
@@ -77,6 +77,12 @@ def thread_killer():
 
 
 app = Flask(__name__)
+
+
+@app.route("/", methods=["GET", "POST"])
+def hello_world():
+
+    return render_template("hello.html")
 
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
 # mydb = mariadb.connect(host="localhost", user="root",
@@ -159,7 +165,7 @@ app = Flask(__name__)
 #     print(i)
 
 
-@app.route("/all", methods=["GET"])
+# @app.route("/all", methods=["GET"])
 # def all():
 
 #     lister = {}
@@ -184,12 +190,6 @@ app = Flask(__name__)
 #     except:
 #         return jsonify(errormsg="error in displaying All")
 #     return jsonify(retlist)
-
-
-@app.route("/", methods=["GET", "POST"])
-def hello_world():
-
-    return render_template("hello.html")
 
 
 # name = "Hassan"
