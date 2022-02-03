@@ -82,8 +82,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def hello_world():
 
-    return render_template("hello.html")
-
+    return "Hellow world"
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
 # mydb = mariadb.connect(host="localhost", user="root",
 #                        password="1234", port=3306)
