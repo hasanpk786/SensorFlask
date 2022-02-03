@@ -160,30 +160,30 @@ app = Flask(__name__)
 
 
 @app.route("/all", methods=["GET"])
-def all():
+# def all():
 
-    lister = {}
-    retlist = []
-    counter = 1
+#     lister = {}
+#     retlist = []
+#     counter = 1
 
-    try:
-        my_cursor.execute("select * from accounts")
+#     try:
+#         my_cursor.execute("select * from accounts")
 
-        for i in my_cursor:
-            print(i, "entry")
-            lister = {
-                "Entry" + (str)(counter) + ":": {},
-                "ID": i[0],
-                "Name": i[1],
-                "Temperature": i[2],
-            }
+#         for i in my_cursor:
+#             print(i, "entry")
+#             lister = {
+#                 "Entry" + (str)(counter) + ":": {},
+#                 "ID": i[0],
+#                 "Name": i[1],
+#                 "Temperature": i[2],
+#             }
 
-            retlist.append(lister)
-            counter += 1
-        print("in try")
-    except:
-        return jsonify(errormsg="error in displaying All")
-    return jsonify(retlist)
+#             retlist.append(lister)
+#             counter += 1
+#         print("in try")
+#     except:
+#         return jsonify(errormsg="error in displaying All")
+#     return jsonify(retlist)
 
 
 @app.route("/", methods=["GET", "POST"])
