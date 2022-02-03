@@ -83,21 +83,21 @@ app = Flask(__name__)
 #                        password="1234", port=3306)
 
 # connecting to certain database in mariadb using root user.
-mydb = mariadb.connect(
-    host="localhost", user="root", database="testing", password="1234", port=3306
-)
+# mydb = mariadb.connect(
+#     host="localhost", user="root", database="testing", password="1234", port=3306
+# )
 
 
-if mydb:
-    print("Connected to MariaDB")
-    # Alarm()
-    print(mydb)
-else:
-    print("Connection Failed")
-
+# if mydb:
+#     print("Connected to MariaDB")
+#     # Alarm()
+#     print(mydb)
+# else:
+#     print("Connection Failed")
+# my_cursor = mydb.cursor()
 
 # cursor for writing queries.
-my_cursor = mydb.cursor()
+
 
 # # creating database if it doesn't exist.
 # my_cursor.execute("Create database if not exists testing")
