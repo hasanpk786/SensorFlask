@@ -4,7 +4,7 @@ import keyboard
 import threading
 from types import TracebackType
 import mysql.connector as mariadb
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 from winsound import Beep
 
 # import mysql.connector as mariadb
@@ -187,33 +187,37 @@ def all():
 
 @app.route("/", methods=["GET", "POST"])
 def hello_world():
-    name = "Hassan"
-    global counter
+    
+    return render_template("hello.html")
 
-    try:
-        data = request.get_json()
-        print(data)
-        global my_cursor, mydb
-        my_cursor.execute(
-            "INSERT INTO accounts" "(" "username, temperature" ")" "values(%s,%s)",
-            (data["username"], data["temperature"]),
-        )
-        # "DateCreated:": checkuser["dateCreated"].strftime("%d/%m/%Y %H:%M:%S"),
-        mydb.commit()
-        my_cursor.execute("select * from accounts")
 
-        for i in my_cursor:
-            print(i)
 
-    except Exception as e:
-        print("\n", e, "Error\n ")
-        # return  jsonify(e, "Error in data")
-        return (str)(e)
+# name = "Hassan"
+#     global counter
 
-    # if keyboard.read_key("p") and (counter == 0):
-    #     t1.join()
-    #     t2.join()
-    #     counter += 1
-    #     print("Should be ok")
-    return "works"
-    # return render_template("hello.html", name=name)
+#     try:
+#         data = request.get_json()
+#         print(data)
+#         global my_cursor, mydb
+#         my_cursor.execute(
+#             "INSERT INTO accounts" "(" "username, temperature" ")" "values(%s,%s)",
+#             (data["username"], data["temperature"]),
+#         )
+#         # "DateCreated:": checkuser["dateCreated"].strftime("%d/%m/%Y %H:%M:%S"),
+#         mydb.commit()
+#         my_cursor.execute("select * from accounts")
+
+#         for i in my_cursor:
+#             print(i)
+
+#     except Exception as e:
+#         print("\n", e, "Error\n ")
+#         # return  jsonify(e, "Error in data")
+#         return (str)(e)
+
+#     # if keyboard.read_key("p") and (counter == 0):
+#     #     t1.join()
+#     #     t2.join()
+#     #     counter += 1
+#     #     print("Should be ok")
+#     return "works"
