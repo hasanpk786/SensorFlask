@@ -79,7 +79,7 @@ from winsound import Beep
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
 def hello_world():
 
     return render_template("hello.html")
