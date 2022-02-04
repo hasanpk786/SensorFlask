@@ -1,13 +1,8 @@
-import time
 from flask_cors import CORS
 import keyboard
-
-# import mariadb
 import threading
-from types import TracebackType
 import mysql.connector as mariadb
 from flask import Flask, request, jsonify, render_template
-from winsound import Beep
 
 
 app = Flask(__name__)
