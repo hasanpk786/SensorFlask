@@ -18,9 +18,10 @@ def hello_world():
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
 mydb = mariadb.connect(
     host="sql6.freemysqlhosting.net",
-    user="root",
+    user="sql6470363",
     password=os.environ.get("password"),
     port=3306,
+    database="sql6470363",
 )
 
 # connecting to certain database in mariadb using root user.
@@ -29,16 +30,25 @@ mydb = mariadb.connect(
 # )
 
 
-# if mydb:
-#     print("Connected to MariaDB")
-#     # Alarm()
-#     print(mydb)
-# else:
-#     print("Connection Failed")
-# my_cursor = mydb.cursor()
+if mydb:
+    print("Connected to MariaDB")
+    # Alarm()
+    print(mydb)
+else:
+    print("Connection Failed")
+my_cursor = mydb.cursor()
 
 # cursor for writing queries.
 
+my_cursor.execute(
+    "CREATE TABLE IF NOT EXISTS accounts"
+    "("
+    "id int(11) NOT NULL AUTO_INCREMENT,"
+    "username varchar(50) NOT NULL,"
+    "temperature varchar(255) NOT NULL,"
+    "PRIMARY KEY (id)"
+    ")AUTO_INCREMENT=1"
+)
 
 # @app.route("/all", methods=["GET"])
 # def all():
