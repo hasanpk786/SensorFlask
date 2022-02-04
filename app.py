@@ -1,5 +1,7 @@
 import time
+from flask_cors import CORS
 import keyboard
+
 # import mariadb
 import threading
 from types import TracebackType
@@ -9,12 +11,13 @@ from winsound import Beep
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/", methods=["GET"])
 def hello_world():
 
-    return "Hellow world"
+    return "Hello cross origin world"
 
 
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
@@ -63,6 +66,3 @@ def hello_world():
 #     except:
 #         return jsonify(errormsg="error in displaying All")
 #     return jsonify(retlist)
-
-
-
