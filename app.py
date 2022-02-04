@@ -50,28 +50,43 @@ my_cursor.execute(
     ")AUTO_INCREMENT=1"
 )
 
-# @app.route("/all", methods=["GET"])
-# def all():
 
-#     lister = {}
-#     retlist = []
-#     counter = 1
+@app.route("/insert", methods=["GET", "POST"])
+def insert():
+    global my_cursor
+    data = request.get_json()
+    my_cursor.execute(
+        "INSERT INTO accounts" "(" "username, temperature" ")" "values(%s,%s)",
+        (data["username"], data["temperature"]),
+    )
+    print("Inserted")
+    # "DateCreated:": checkuser["dateCreated"].strftime("%d/%m/%Y %H:%M:%S"),
+    mydb.commit()
+    return "Data inserted"
 
-#     try:
-#         my_cursor.execute("select * from accounts")
 
-#         for i in my_cursor:
-#             print(i, "entry")
-#             lister = {
-#                 "Entry" + (str)(counter) + ":": {},
-#                 "ID": i[0],
-#                 "Name": i[1],
-#                 "Temperature": i[2],
-#             }
+@app.route("/all", methods=["GET"])
+def all():
 
-#             retlist.append(lister)
-#             counter += 1
-#         print("in try")
-#     except:
-#         return jsonify(errormsg="error in displaying All")
-#     return jsonify(retlist)
+    lister = {}
+    retlist = []
+    counter = 1
+
+    try:
+        my_cursor.execute("select * from accounts")
+
+        for i in my_cursor:
+            print(i, "entry")
+            lister = {
+                "Entry" + (str)(counter) + ":": {},
+                "ID": i[0],
+                "Name": i[1],
+                "Temperature": i[2],
+            }
+
+            retlist.append(lister)
+            counter += 1
+        print("in try")
+    except:
+        return jsonify(errormsg="error in displaying All")
+    return jsonify(retlist)
