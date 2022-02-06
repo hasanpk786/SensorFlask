@@ -90,3 +90,18 @@ def all():
     except:
         return jsonify(errormsg="error in displaying All")
     return jsonify(retlist)
+
+
+@app.route("/countRows", methods=["GET"])
+def countRows():
+    global my_cursor
+    returner = 0
+    my_cursor.execute("select COUNT(*) as RowCount from accounts")
+    for i in my_cursor:
+        if i[0] > 0:
+            returner = i[0]
+        print(i, "row count checks out")
+
+    print(returner, "no loop needed here!")
+
+    return (str)(returner)
