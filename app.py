@@ -1,6 +1,5 @@
 from flask_cors import CORS
 import os
-import threading
 import mysql.connector as mariadb
 from flask import Flask, request, jsonify, render_template
 
@@ -18,10 +17,11 @@ def hello_world():
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
 mydb = mariadb.connect(
     host="sql6.freemysqlhosting.net",
-    user="sql6470363",
+    user="sql6474147",
     password=os.environ.get("password"),
     port=3306,
-    database="sql6470363",
+    database="sql6474147",
+    
 )
 
 # connecting to certain database in mariadb using root user.

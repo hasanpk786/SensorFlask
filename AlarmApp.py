@@ -1,5 +1,5 @@
 # # import mysql.connector as mariadb
-
+# venv\scripts\activate
 # # Used to kill threads
 # # Killer = True
 # # counter = 0
