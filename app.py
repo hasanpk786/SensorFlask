@@ -15,19 +15,25 @@ def hello_world():
 
 
 # connecting to mariadb using root user when no database selected#http://127.0.0.1:5000/
-mydb = mariadb.connect(
-    host="sql6.freemysqlhosting.net",
-    user="sql6474147",
-    password=os.environ.get("password"),
-    port=3306,
-    database="sql6474147",
-    
-)
+# mydb = mariadb.connect(
+#     host="sql6.freemysqlhosting.net",
+#     user="sql6474147",
+#     password=os.environ.get("password"),
+#     port=3306,
+#     database="sql6474147",
+# )
+
+
 
 # connecting to certain database in mariadb using root user.
 # mydb = mariadb.connect(
 #     host="localhost", user="root", database="testing", password="1234", port=3306
 # )
+
+# 
+mydb = mariadb.connect(
+    host="192.168.0.253", user="roche", database="Testing", password="Karachi123", port=3306
+)
 
 
 if mydb:
