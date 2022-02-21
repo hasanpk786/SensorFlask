@@ -31,9 +31,9 @@ mydb = mariadb.connect(
 # )
 
 # 
-mydb = mariadb.connect(
-    host="192.168.0.253", user="roche", database="Testing", password="Karachi123", port=3306
-)
+# mydb = mariadb.connect(
+#     host="192.168.0.253", user="roche", database="Testing", password="Karachi123", port=3306
+# )
 
 
 if mydb:
